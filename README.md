@@ -2,8 +2,6 @@
 
 This repository showcases developer-facing technical documentation for an AI-powered music composition tool built with large language models (LLMs) and Python.
 
-It serves as a writing sample for API documentation, internal function reference, and docs-as-code workflows using Markdown and Git.
-
 ---
 
 ## 📘 What’s Included
