@@ -1,41 +1,47 @@
-# LLM Music Composer – Developer Docs Sample
+# Compose Music with Text Prompts – LLM + Python + ABC Notation
 
-This repository showcases developer-facing technical documentation for an AI-powered music composition tool built with large language models (LLMs) and Python.
+This repo shows you how to compose chord progressions with large language models like GPT-3.5 and Claude. You give the model a prompt (like "Write a chord progression in C major in ¾ time") and it returns music in ABC notation, which we convert to MIDI with a Python script.
 
----
-
-## 📘 What’s Included
-
-| File | Description |
-|------|-------------|
-| [`api-reference.md`](./api-reference.md) | Complete API documentation for composing music with GPT-3.5 and Claude Opus |
-| [`composer-functions.md`](./composer-functions.md) | Internal function docs for processing ABC notation and converting to MIDI |
+You can try it in Google Colab or run the scripts locally.
 
 ---
 
-## 🔧 Technologies Covered
+## 🔗 Try It in Colab
 
+[Open in Google Colab](https://colab.research.google.com/github/YOUR_USERNAME/llm-music-composer-docs/blob/main/demo.ipynb)  
+
+---
+
+## How It Works
+
+1. You write a prompt like `"Write a chord progression in F major in 4/4"`.
+2. The prompt is sent to either Claude or GPT-3.5 (fine-tuned).
+3. The model responds with music in ABC notation.
+4. A Python script checks and cleans the notation (fixes sharps/flats).
+5. The Music21 library converts the ABC into a MIDI file.
+6. You can drag the MIDI into your DAW or notation software.
+
+---
+
+## 📘 Docs
+
+| File | What's Inside |
+|------|----------------|
+| [`api-reference.md`](./api-reference.md) | How we call GPT-3.5 and Claude to generate music |
+| [`composer-functions.md`](./composer-functions.md) | Python code to clean notation and make MIDI files |
+
+---
+
+## Stack
+
+- Python
 - OpenAI GPT-3.5 Turbo (fine-tuned)
 - Claude Opus (Anthropic)
-- Python + Music21 library
-- ABC Notation to MIDI workflow
-- Markdown documentation using Git
-
----
-
-## ✍️ Why This Repo
-
-This project demonstrates:
-
-- Developer-facing API reference writing
-- Markdown formatting and docs-as-code structure
-- Real-world Python usage and logic documentation
-- A clear, minimal GitHub documentation sample
-
-It’s designed to showcase technical writing skills for roles like developer documentation, API writer, and UX-adjacent technical comms.
+- Music21
+- ABC Notation
 
 ---
 
 ## 📎 License
 
-Documentation in this repository is shared under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) license.
+Shared under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) license.
