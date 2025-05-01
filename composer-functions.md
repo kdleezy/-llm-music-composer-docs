@@ -88,7 +88,7 @@ def convert_stream_to_midi(s, file_name="output.mid"):
 
 ## 🎵 Example Flow
 
-After calling Claude Sonnet and storing the result in `raw_output`, use this code to process it:
+After calling Claude Sonnet and storing the result in `raw_output`, use this code to process it and create a MIDI file:
 
 ```python
 cleaned = convert_sharps_flats(raw_output)
