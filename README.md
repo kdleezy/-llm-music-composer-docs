@@ -1,14 +1,15 @@
 # Compose Music with Text Prompts – LLM + Python + ABC Notation
 
-This repo shows you how to compose chord progressions with [Claude 3.7 Sonnet](https://docs.anthropic.com/en/docs/welcome). You give the model a prompt (like "Write a chord progression in C major in ¾ time") and it returns music in ABC notation. Here's a [quick tutorial on ABC notation](https://notabc.app/abc/basics/) if you want to learn more about folk music notation style. 
+This repo shows you how to compose chord progressions with [Claude 3.7 Sonnet](https://docs.anthropic.com/en/docs/welcome). You prompt the model like "Write a chord progression in C major in ¾ time," and it returns music in ABC notation or "folk notation." Here's a [quick tutorial on ABC notation](https://notabc.app/abc/basics/) if you want to learn more about folk notation. 
 
 Try it in Google Colab or run the scripts locally.
 
 ---
 
 ## 🔗 Try It in Colab
+Quickly run the scripts and listen to your music with this notebook. Or use the docs below to run them locally.
 
-[Open in Google Colab](https://colab.research.google.com/github/YOUR_USERNAME/llm-music-composer-docs/blob/main/demo.ipynb)  
+[Open in Google Colab](https://colab.research.google.com/drive/14UhSQwHXmD0cB9pP2RvQ6NRLljmgUeqg#scrollTo=SrDHuwYnXnoG)  
 
 ---
 
@@ -35,7 +36,7 @@ Try it in Google Colab or run the scripts locally.
 ## Stack
 
 - Python
-- Claude Opus (Anthropic)
+- Claude 3.7 Sonnet (Anthropic)
 - Music21
 - ABC Notation
 
