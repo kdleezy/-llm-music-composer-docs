@@ -1,15 +1,28 @@
+# Composer Functions – Cleaning and Converting ABC Notation
 
-# Composer Functions Reference
+This module includes Python functions to clean, validate, and convert Claude Sonnet's ABC music notation into MIDI files using the Music21 library.
 
-This document outlines the core Python functions used in the LLM Music Composer app to clean ABC music notation and convert it into MIDI files using Music21.
+Use these after calling the Claude API to:
+
+- Fix formatting issues (e.g., sharps/flats)
+- Validate headers
+- Export to MIDI
 
 ---
 
-## 🧹 `convert_sharps_flats(progression: str) -> str`
+## 🔧 Requirements
 
-Converts LLM-generated accidentals (`#`, `b`) into Music21-compatible ABC symbols (`^`, `_`).
+Install Music21:
 
-This function walks through the ABC string character-by-character, detects accidentals, and rewrites them inline for compatibility with music parsing libraries.
+```bash
+pip install music21
+```
+
+---
+
+## `convert_sharps_flats(progression: str) -> str`
+
+Converts characters like `#`, `b`, or `♭` from Claude output into Music21-compatible symbols (`^` for sharps, `_` for flats).
 
 ```python
 def convert_sharps_flats(progression):
@@ -22,7 +35,7 @@ def convert_sharps_flats(progression):
             if i+1 < len(progression) and progression[i+1] in ['#', 'b', '♭']:
                 converted_char = '^' if progression[i+1] == '#' else '_'
                 converted_progression += converted_char + char
-                i += 1  # Skip next character
+                i += 1  # Skip accidental
             else:
                 converted_progression += char
         else:
@@ -33,59 +46,63 @@ def convert_sharps_flats(progression):
 
 ---
 
-## 🎼 `parse_abc_to_stream(abc_notation: str) -> stream | None`
+## `validate_abc_headers(text: str) -> bool`
 
-Parses ABC notation into a Music21 stream object. This stream can be converted into a MIDI file.
-
-Includes basic error handling to catch and log parsing errors.
+Checks if the ABC string contains all required headers.
 
 ```python
+def validate_abc_headers(text):
+    required = ["T:", "M:", "L:", "K:"]
+    return all(header in text for header in required)
+```
+
+---
+
+## `parse_abc_to_stream(abc_notation: str) -> stream | None`
+
+Parses ABC notation into a Music21 stream. Returns `None` if parsing fails.
+
+```python
+from music21 import converter
+
 def parse_abc_to_stream(abc_notation):
-    """
-    Parses ABC notation into a music21 stream.
-    """
     try:
         return converter.parseData(abc_notation, format='abc')
     except Exception as e:
-        print(f"Failed to parse ABC notation into stream: {e}")
+        print(f"Parse error: {e}")
         return None
 ```
 
 ---
 
-## 🎛️ `convert_stream_to_midi(s: stream, file_name: str = "output.mid") -> None`
+## `convert_stream_to_midi(s: stream, file_name: str = "output.mid") -> None`
 
-Takes a Music21 stream and saves it as a `.mid` file.
+Converts a Music21 stream into a `.mid` file that can be dragged into any DAW or notation app.
 
 ```python
 def convert_stream_to_midi(s, file_name="output.mid"):
-    """
-    Converts the music21 stream to a MIDI file.
-    """
     s.write('midi', fp=file_name)
 ```
 
 ---
 
-## 🧪 Example Output
+## 🎵 Example Flow
 
-Here is an example of a correctly formatted ABC string after LLM conversion and Music21 processing:
+After calling Claude Sonnet and storing the result in `raw_output`, use this code to process it:
 
-```abc
-T:F Major Chord Progression
-M:4/4
-L:1/4
-K:F
-[F,A,C] [G,B,D] [A,C,E] [F,A,C] [_B,D,F] [C,E,G] [D,F,A] [G,B,D] | [C,E,G] [F,A,C] [_B,D,F] [F,A,C] ||
+```python
+cleaned = convert_sharps_flats(raw_output)
+
+if validate_abc_headers(cleaned):
+    stream = parse_abc_to_stream(cleaned)
+    if stream:
+        convert_stream_to_midi(stream, "progression.mid")
 ```
 
-This ABC string can be passed through the functions above to produce a MIDI file that composers can drag into their DAW.
+This pipeline assumes you’ve already made the Claude API call and are now ready to clean and convert the music output.
 
 ---
 
-## 📌 Notes
+## 📎 Related Docs
 
-- Music21 requires chords to be wrapped in brackets and uses `^` and `_` for accidentals.
-- Always validate output after LLM generation before conversion.
-- MIDI creation is fast but depends on successful ABC parsing.
-
+- [`api-reference.md`](./api-reference.md): for Claude API usage and prompt design.
