@@ -1,6 +1,6 @@
 # Compose Music with Text Prompts – LLM + Python + ABC Notation
 
-This repo shows you how to compose chord progressions with [Claude 3.7 Sonnet](https://docs.anthropic.com/en/docs/welcome). You prompt the model like "Write a chord progression in C major in ¾ time," and it returns music in ABC notation or "folk notation." Here's a [quick tutorial on ABC notation](https://notabc.app/abc/basics/) if you want to learn more about folk notation. 
+This repo shows you how to compose chord progressions with [Claude 3.7 Sonnet](https://docs.anthropic.com/en/docs/welcome). You prompt the model like "Write a chord progression in C major in ¾ time," and it returns music in ABC notation or "folk notation." Here's a [quick tutorial on ABC notation](https://notabc.app/abc/basics/) if you want to learn more. 
 
 Try it in Google Colab or run the scripts locally.
 
