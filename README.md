@@ -9,7 +9,7 @@ Try it in Google Colab or run the scripts locally.
 ## 🔗 Try It in Colab
 Quickly run the scripts and listen to your music with this notebook. Or use the docs below to run them locally.
 
-[Open in Google Colab](https://colab.research.google.com/drive/14UhSQwHXmD0cB9pP2RvQ6NRLljmgUeqg#scrollTo=SrDHuwYnXnoG)  
+[Open in Google Colab](https://colab.research.google.com/github/kdleezy/-llm-music-composer-docs/blob/main/Compose_with_Claude.ipynb)  
 
 ---
 
