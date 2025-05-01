@@ -1,8 +1,8 @@
 # Compose Music with Text Prompts – LLM + Python + ABC Notation
 
-This repo shows you how to compose chord progressions with large language models like GPT-3.5 and Claude. You give the model a prompt (like "Write a chord progression in C major in ¾ time") and it returns music in ABC notation, which we convert to MIDI with a Python script.
+This repo shows you how to compose chord progressions with [Claude 3.7 Sonnet](https://docs.anthropic.com/en/docs/welcome). You give the model a prompt (like "Write a chord progression in C major in ¾ time") and it returns music in ABC notation, which we convert to a MIDI file with a Python script. Then, you can drag and drop the MIDI file into your recording software or re-run the script to generate a new MIDI file. 
 
-You can try it in Google Colab or run the scripts locally.
+Try it in Google Colab or run the scripts locally.
 
 ---
 
