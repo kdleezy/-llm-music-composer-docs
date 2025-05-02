@@ -41,7 +41,7 @@ import os
 client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
 response = client.messages.create(
-    model="claude-3-sonnet-20250219",
+    model="claude-3-7-sonnet-20250219",
     max_tokens=1024,
     temperature=0.5,
     system=(
